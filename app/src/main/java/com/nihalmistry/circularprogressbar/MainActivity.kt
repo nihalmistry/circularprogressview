@@ -11,28 +11,36 @@ import com.nihalmistry.circularprogressview.CircularProgressView
 class MainActivity : AppCompatActivity() {
 
     lateinit var myProgressView : CircularProgressView
+    lateinit var btnStart : Button
+    lateinit var txtProgress : TextView
+
+    val myAnimator: ValueAnimator = ValueAnimator.ofFloat(100f, 0f)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         myProgressView = findViewById(R.id.myProgressView)
+        btnStart = findViewById<Button>(R.id.btn_start)
+        txtProgress = findViewById<TextView>(R.id.txt_progress)
 
-        val btn_start = findViewById<Button>(R.id.btn_start)
-        val txt_progress = findViewById<TextView>(R.id.txt_progress)
+        myAnimator.addUpdateListener {
+            myProgressView.progress = it.animatedValue as Float
+            txtProgress.text = String.format("%.0f", it.animatedValue)
+        }
+        myAnimator.repeatMode = ValueAnimator.REVERSE
+        myAnimator.repeatCount = ValueAnimator.INFINITE
+        myAnimator.setDuration(6000)
 
-        btn_start.setOnClickListener { view ->
-            myProgressView.progress = 50f
-            val myAnimator: ValueAnimator = ValueAnimator.ofFloat(100f, 0f)
-            myAnimator.addUpdateListener {
-                myProgressView.progress = it.animatedValue as Float
-                txt_progress.text = String.format("%.0f", it.animatedValue)
-                myProgressView.alpha = (it.animatedValue as Float) / 100
-                txt_progress.alpha = (it.animatedValue as Float) / 100
+
+        btnStart.setOnClickListener { view ->
+            if ( ! myAnimator.isRunning) {
+                myAnimator.start()
+                btnStart.text = "Stop"
+            } else {
+                myAnimator.cancel()
+                btnStart.text = "Start"
+                myProgressView.progress = 0f
             }
-            myAnimator.repeatMode = ValueAnimator.REVERSE
-            myAnimator.repeatCount = ValueAnimator.INFINITE
-            myAnimator.setDuration(6000)
-            myAnimator.start()
         }
     }
 }
