@@ -1,2 +1,2 @@
-# circularprogressview
-This is an Android custom View for displaying a circular progress bar
+# CircularProgressView
+This is an Android custom View for displaying a circular progress bar.
