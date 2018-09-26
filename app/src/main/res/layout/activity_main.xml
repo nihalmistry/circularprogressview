@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#1c2c3b">
+
+    <com.nihalmistry.circularprogressview.CircularProgressView
+        android:id="@+id/myProgressView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:padding="15dp"
+        app:trackColor="#253443"
+        app:trackWidth="8dp"
+        app:progressWidth="10dp"
+        app:progressColor="#1dffb7"
+        app:thumbDrawable="@drawable/progress_thumb_icon"
+        app:thumbTint="#1dffb7"
+        app:thumbHeight="60dp"
+        app:thumbWidth="60dp"
+        />
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Start"
+        app:layout_constraintEnd_toEndOf="@+id/myProgressView"
+        app:layout_constraintStart_toStartOf="@+id/myProgressView"
+        app:layout_constraintTop_toBottomOf="@+id/myProgressView" />
+
+    <TextView
+        android:id="@+id/txt_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/fira_sans_font_family"
+        android:textSize="30sp"
+        android:text="100"
+        android:textColor="#1dffb7"
+        app:layout_constraintBottom_toBottomOf="@+id/myProgressView"
+        app:layout_constraintEnd_toEndOf="@+id/myProgressView"
+        app:layout_constraintStart_toStartOf="@+id/myProgressView"
+        app:layout_constraintTop_toTopOf="@+id/myProgressView" />
+</android.support.constraint.ConstraintLayout>
